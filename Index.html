@@ -1,16 +1,738 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Mac Donohue</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Fun Ball - Premium Sports Magazine</title>
     <style>
-      body { font-family: sans-serif; text-align: center; margin-top: 100px; }
-      h1 { font-size: 3em; }
-      p { font-size: 1.2em; color: gray; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ffb-green: #2d5a3d;
+            --dark-green: #1e3d2a;
+            --light-green: #4a7c59;
+            --accent-gold: #d4af37;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #888888;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-cream: #faf8f5;
+            --border-light: #e5e5e5;
+            --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-white);
+        }
+
+        /* Header */
+        .header {
+            background: var(--ffb-green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--ffb-green);
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--ffb-green);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Article */
+        .hero-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            background: var(--bg-cream);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-eyebrow {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero-category {
+            color: var(--ffb-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            color: var(--ffb-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--ffb-green);
+            padding-bottom: 2px;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--dark-green);
+            border-color: var(--dark-green);
+        }
+
+        .hero-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .hero-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--ffb-green), var(--light-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Timeline Sections */
+        .timeline-year {
+            margin-bottom: 4rem;
+        }
+
+        .year-header {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--ffb-green);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--ffb-green);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Article Cards */
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--ffb-green), var(--light-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-category {
+            color: var(--ffb-green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .article-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Loading States */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: block;
+                position: static;
+                padding: 0;
+                box-shadow: none;
+                background: transparent;
+            }
+
+            .nav-links {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                border-bottom: none;
+                padding: 0;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-article {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Typography Enhancements */
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+        }
+
+        p {
+            font-family: 'Georgia', serif;
+        }
+
+        .serif {
+            font-family: 'Georgia', serif;
+        }
+
+        .sans-serif {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
     </style>
-  </head>
-  <body>
-    <h1>Welcome to Mac Donohue's Website</h1>
-    <p>This site is under construction—but it’s gonna be great.</p>
-  </body>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="logo">
+                <div class="logo-icon">FFB</div>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#seasons">Seasons</a></li>
+                    <li><a href="#playoffs">Playoffs</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Article -->
+        <article class="hero-article fade-in" id="heroArticle">
+            <div class="hero-content">
+                <div class="hero-eyebrow">YEAR OF THE CHOW!</div>
+                <div class="hero-category">CHAMPIONS</div>
+                <h1 class="hero-title">In His Ninth Try, Brome Conquers The League To Win His First Family Fun Ball Title!</h1>
+                <p class="hero-excerpt">After eight straight seasons of playoff elimination, Brome came into his 2024 Season with the belief of a Cowboys fan. "This is my year!" On August 30th he drafted his team consisting of an overlooked Lions QB and his favorite star WR target, a $275 million dollar QB in Jacksonville, and everyone's favorite TE George Kittle, and now after 17 weeks, 5 trades and a league high 61 add/drops... for the first time in franchise history Brom...</p>
+                <div class="hero-meta">
+                    <a href="#" class="read-more">Link to full article</a>
+                    <span class="hero-date">January 2nd 2025</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-placeholder">2024 Champions Image</div>
+            </div>
+        </article>
+
+        <!-- Timeline Sections -->
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2024</h2>
+            <div class="articles-grid" id="articles2024">
+                <div class="loading">Loading 2024 articles...</div>
+            </div>
+        </section>
+
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2023</h2>
+            <div class="articles-grid" id="articles2023">
+                <div class="loading">Loading 2023 articles...</div>
+            </div>
+        </section>
+
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2022</h2>
+            <div class="articles-grid" id="articles2022">
+                <div class="loading">Loading 2022 articles...</div>
+            </div>
+        </section>
+
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2021</h2>
+            <div class="articles-grid" id="articles2021">
+                <div class="loading">Loading 2021 articles...</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Sample data structure matching your website
+        const sampleData = {
+            hero: {
+                eyebrow: "YEAR OF THE CHOW!",
+                category: "CHAMPIONS",
+                title: "In His Ninth Try, Brome Conquers The League To Win His First Family Fun Ball Title!",
+                excerpt: "After eight straight seasons of playoff elimination, Brome came into his 2024 Season with the belief of a Cowboys fan. \"This is my year!\" On August 30th he drafted his team consisting of an overlooked Lions QB and his favorite star WR target, a $275 million dollar QB in Jacksonville, and everyone's favorite TE George Kittle, and now after 17 weeks, 5 trades and a league high 61 add/drops... for the first time in franchise history Brom...",
+                date: "January 2nd 2025",
+                link: "#",
+                image: "2024-champions.jpg"
+            },
+            articles: {
+                2024: [
+                    {
+                        category: "CHAMPIONS",
+                        title: "A LONG TIME COMING!—In His 9th Try, Brome Conquers The Bracket To Win His First FFB Title!",
+                        excerpt: "After eight straight seasons of playoff elimination, Brome finally breaks through...",
+                        image: "2024-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS", 
+                        title: "A Rivalry Final!—Sheer Dominance Pits Henry And Brome In An All-Time Star-Studded Finale.",
+                        excerpt: "Two powerhouse teams clash in an epic championship showdown...",
+                        image: "2024-finals.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "SEMIFINALS",
+                        title: "It's Raining Points!—Henry And Brome Cruise To The Semis. Shel and Cade Pull Off The Upsets.",
+                        excerpt: "High-scoring semifinals action leads to surprising upsets...",
+                        image: "2024-semis.jpg", 
+                        link: "#"
+                    },
+                    {
+                        category: "PLAYOFFS",
+                        title: "The 15th Annual Family Fun Ball Playoffs Commence. Henry Claims His First Regular-Season Title.",
+                        excerpt: "Playoff time arrives with Henry earning top seed honors...",
+                        image: "2024-playoffs.jpg",
+                        link: "#"
+                    }
+                ],
+                2023: [
+                    {
+                        category: "CHAMPIONS",
+                        title: "THE SLIPPER FITS!—Sako's Sleepers Complete The Cinderella Run From 8th Seed To 2nd FFB Title.",
+                        excerpt: "An incredible underdog story culminates in championship glory...",
+                        image: "2023-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS",
+                        title: "The Trades Pay Off!—Deadline Acquisitions Propel Garrett And Noah Into The Finale.",
+                        excerpt: "Strategic deadline moves pay dividends in the championship game...", 
+                        image: "2023-finals.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "SEMIFINALS", 
+                        title: "Is A Rematch Brewing?—Henry & Mac Both Advance To Back-to-back Semifinals.",
+                        excerpt: "Familiar faces return to the final four...",
+                        image: "2023-semis.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "PLAYOFFS",
+                        title: "The 14th Annual Family Fun Ball Playoffs Commence. The Peeps Claim The Regular-Season Title.",
+                        excerpt: "Another exciting playoff tournament begins...",
+                        image: "2023-playoffs.jpg", 
+                        link: "#"
+                    }
+                ],
+                2022: [
+                    {
+                        category: "CHAMPIONS",
+                        title: "YAYYY HENRY!—Henry Captures His First FFB Title In An Historic And Bizarre Two Week Finale.",
+                        excerpt: "A wild championship conclusion crowns a first-time winner...",
+                        image: "2022-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS", 
+                        title: "Flight vs Might—Henry Proves The Final Team To Stand Between Mac And His Three-Peat.",
+                        excerpt: "Can Mac complete the three-peat or will Henry spoil the party?",
+                        image: "2022-finals.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "SEMIFINALS",
+                        title: "The Quest For The Three-Peat Continues. B and Mac Faceoff In A 2021 Finals Rematch.",
+                        excerpt: "History repeats as familiar foes meet again...",
+                        image: "2022-semis.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "PLAYOFFS",
+                        title: "The 13th Annual Family Fun Ball Playoffs Commence. Noah Claims The Regular-Season Title.",
+                        excerpt: "The playoffs are set with Noah earning the top seed...",
+                        image: "2022-playoffs.jpg",
+                        link: "#"
+                    }
+                ],
+                2021: [
+                    {
+                        category: "CHAMPIONS", 
+                        title: "MAC ATTACK!—Mac Wins Back-To-Back Championships In Dominant Fashion.",
+                        excerpt: "Mac proves his first title was no fluke with a repeat performance...",
+                        image: "2021-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS",
+                        title: "Championship Showdown—Mac and B Battle For Ultimate Glory.",
+                        excerpt: "Two titans clash in an epic championship battle...",
+                        image: "2021-finals.jpg", 
+                        link: "#"
+                    }
+                ]
+            }
+        };
+
+        // Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Load content
+        function loadContent() {
+            try {
+                const data = sampleData;
+                
+                // Load articles for each year
+                loadArticlesForYear('2024', data.articles[2024]);
+                loadArticlesForYear('2023', data.articles[2023]);
+                loadArticlesForYear('2022', data.articles[2022]);
+                loadArticlesForYear('2021', data.articles[2021]);
+                
+            } catch (error) {
+                console.error('Error loading content:', error);
+            }
+        }
+
+        function loadArticlesForYear(year, articles) {
+            const container = document.getElementById(`articles${year}`);
+            if (!container || !articles) return;
+            
+            container.innerHTML = '';
+            
+            articles.forEach((article, index) => {
+                const articleElement = document.createElement('article');
+                articleElement.className = 'article-card fade-in';
+                articleElement.style.animationDelay = `${index * 0.1}s`;
+                
+                articleElement.innerHTML = `
+                    <div class="article-image">
+                        ${article.image ? 
+                            `<img src="${article.image}" alt="${article.title}" loading="lazy">` : 
+                            `<div class="article-placeholder">${article.category} Image</div>`
+                        }
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">${article.category}</div>
+                        <h3 class="article-title">${article.title}</h3>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <div class="article-meta">
+                            <span>Read More</span>
+                            <span>${year}</span>
+                        </div>
+                    </div>
+                `;
+                
+                if (article.link) {
+                    articleElement.addEventListener('click', () => {
+                        window.open(article.link, '_blank');
+                    });
+                }
+                
+                container.appendChild(articleElement);
+                observer.observe(articleElement);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe elements for animations
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Load content
+            loadContent();
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // CMS Integration - Replace with your actual data source
+        const CMS_CONFIG = {
+            // Update this with your Google Sheets CSV URL or local file path
+            dataSource: 'ffb-articles.csv'
+        };
+    </script>
+</body>
 </html>
