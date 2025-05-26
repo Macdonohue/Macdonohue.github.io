@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Modern Design</title>
+    <title>Family Fun Ball - Premium Sports Magazine</title>
     <style>
         * {
             margin: 0;
@@ -12,246 +12,221 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #f59e0b;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-dark: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --ffb-green: #2d5a3d;
+            --dark-green: #1e3d2a;
+            --light-green: #4a7c59;
+            --accent-gold: #d4af37;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #888888;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-cream: #faf8f5;
+            --border-light: #e5e5e5;
+            --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 16px rgba(0,0,0,0.15);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
             color: var(--text-primary);
-            overflow-x: hidden;
-        }
-
-        /* Smooth scroll and animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
+            background: var(--bg-white);
         }
 
         /* Header */
         .header {
-            position: fixed;
+            background: var(--ffb-green);
+            position: sticky;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
             z-index: 1000;
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
         }
 
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav {
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            height: 80px;
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
+            flex: 1;
         }
 
-        .hero::before {
-            content: '';
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--ffb-green);
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: none;
             position: absolute;
-            top: 0;
+            top: 100%;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            background: var(--ffb-green);
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-medium);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+        .nav-menu.active {
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Article */
+        .hero-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            background: var(--bg-cream);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
         }
 
         .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 2;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: slideUp 1s ease 0.5s forwards;
-        }
-
-        .hero p {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: slideUp 1s ease 0.7s forwards;
-        }
-
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
+        .hero-eyebrow {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            animation: slideUp 1s ease 0.9s forwards;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
-        .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        .hero-category {
+            color: var(--ffb-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
 
-        /* Sections */
-        .section {
-            padding: 5rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
         }
 
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
         }
 
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .portfolio-item {
-            background: white;
-            border-radius: 20px;
+        .read-more {
+            color: var(--ffb-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--ffb-green);
+            padding-bottom: 2px;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--dark-green);
+            border-color: var(--dark-green);
+        }
+
+        .hero-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .hero-image {
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            box-shadow: var(--shadow-medium);
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-image {
+        .hero-image img {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--ffb-green), var(--light-green));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -260,291 +235,405 @@
             font-weight: 600;
         }
 
-        .portfolio-content {
-            padding: 2rem;
+        /* Timeline Sections */
+        .timeline-year {
+            margin-bottom: 4rem;
         }
 
-        .portfolio-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .year-header {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--ffb-green);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--ffb-green);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Article Cards */
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--ffb-green), var(--light-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-category {
+            color: var(--ffb-green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.3;
             margin-bottom: 1rem;
             color: var(--text-primary);
         }
 
-        .portfolio-description {
-            color: var(--text-secondary);
+        .article-excerpt {
+            font-size: 0.95rem;
             line-height: 1.6;
-        }
-
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .blog-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .blog-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-date {
             color: var(--text-secondary);
-            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .blog-excerpt {
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--bg-secondary);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 20px;
+        .article-meta {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--bg-dark);
-            color: white;
-            text-align: center;
-            padding: 3rem 5%;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Loading State */
+        /* Loading States */
         .loading {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             color: var(--text-secondary);
+            font-style: italic;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: block;
+                position: static;
+                padding: 0;
+                box-shadow: none;
+                background: transparent;
+            }
+
             .nav-links {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                border-bottom: none;
+                padding: 0;
+            }
+
+            .menu-toggle {
                 display: none;
             }
-            
-            .about-content {
+        }
+
+        @media (max-width: 768px) {
+            .hero-article {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
             }
-            
-            .section {
-                padding: 3rem 5%;
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Parallax Effect */
-        .parallax {
-            transform: translateY(0);
-            transition: transform 0.1s ease-out;
+        /* Typography Enhancements */
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+        }
+
+        p {
+            font-family: 'Georgia', serif;
+        }
+
+        .serif {
+            font-family: 'Georgia', serif;
+        }
+
+        .sans-serif {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav">
-            <div class="logo">Portfolio</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="header-content">
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="logo">
+                <div class="logo-icon">FFB</div>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#seasons">Seasons</a></li>
+                    <li><a href="#playoffs">Playoffs</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 id="hero-title">Creative Portfolio</h1>
-            <p id="hero-subtitle">Bringing ideas to life through design and code</p>
-            <a href="#portfolio" class="cta-button">View My Work</a>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
-        <h2 class="section-title fade-in">My Portfolio</h2>
-        <div class="portfolio-grid" id="portfolio-grid">
-            <div class="loading">Loading portfolio items...</div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-        <h2 class="section-title fade-in">Latest Blog Posts</h2>
-        <div class="blog-grid" id="blog-grid">
-            <div class="loading">Loading blog posts...</div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <h2 class="section-title fade-in">About Me</h2>
-        <div class="about-content">
-            <div class="about-text slide-left">
-                <p id="about-description">Loading about content...</p>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Article -->
+        <article class="hero-article fade-in" id="heroArticle">
+            <div class="hero-content">
+                <div class="hero-eyebrow">YEAR OF THE CHOW!</div>
+                <div class="hero-category">CHAMPIONS</div>
+                <h1 class="hero-title">In His Ninth Try, Brome Conquers The League To Win His First Family Fun Ball Title!</h1>
+                <p class="hero-excerpt">After eight straight seasons of playoff elimination, Brome came into his 2024 Season with the belief of a Cowboys fan. "This is my year!" On August 30th he drafted his team consisting of an overlooked Lions QB and his favorite star WR target, a $275 million dollar QB in Jacksonville, and everyone's favorite TE George Kittle, and now after 17 weeks, 5 trades and a league high 61 add/drops... for the first time in franchise history Brom...</p>
+                <div class="hero-meta">
+                    <a href="#" class="read-more">Link to full article</a>
+                    <span class="hero-date">January 2nd 2025</span>
+                </div>
             </div>
-            <div class="about-image slide-right">
-                <span>Your Photo Here</span>
+            <div class="hero-image">
+                <div class="hero-placeholder">2024 Champions Image</div>
             </div>
-        </div>
-    </section>
+        </article>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#" id="social-twitter">🐦</a>
-                <a href="#" id="social-linkedin">💼</a>
-                <a href="#" id="social-github">💻</a>
-                <a href="#" id="social-email">📧</a>
+        <!-- Timeline Sections -->
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2024</h2>
+            <div class="articles-grid" id="articles2024">
+                <div class="loading">Loading 2024 articles...</div>
             </div>
-            <p>&copy; 2025 Portfolio. All rights reserved.</p>
-        </div>
-    </footer>
+        </section>
+
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2023</h2>
+            <div class="articles-grid" id="articles2023">
+                <div class="loading">Loading 2023 articles...</div>
+            </div>
+        </section>
+
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2022</h2>
+            <div class="articles-grid" id="articles2022">
+                <div class="loading">Loading 2022 articles...</div>
+            </div>
+        </section>
+
+        <section class="timeline-year fade-in">
+            <h2 class="year-header">2021</h2>
+            <div class="articles-grid" id="articles2021">
+                <div class="loading">Loading 2021 articles...</div>
+            </div>
+        </section>
+    </main>
 
     <script>
-        // CMS Configuration - Replace with your actual data source
-        const CMS_CONFIG = {
-            // For Google Sheets, use the CSV export URL
-            // For local files, use relative path
-            dataSource: 'portfolio-data.csv', // Change this to your actual data source
-            
-            // Alternative: Google Sheets CSV URL format:
-            // 'https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=0'
-        };
-
-        // Sample data structure for reference
+        // Sample data structure matching your website
         const sampleData = {
             hero: {
-                title: "Creative Portfolio",
-                subtitle: "Bringing ideas to life through design and code"
+                eyebrow: "YEAR OF THE CHOW!",
+                category: "CHAMPIONS",
+                title: "In His Ninth Try, Brome Conquers The League To Win His First Family Fun Ball Title!",
+                excerpt: "After eight straight seasons of playoff elimination, Brome came into his 2024 Season with the belief of a Cowboys fan. \"This is my year!\" On August 30th he drafted his team consisting of an overlooked Lions QB and his favorite star WR target, a $275 million dollar QB in Jacksonville, and everyone's favorite TE George Kittle, and now after 17 weeks, 5 trades and a league high 61 add/drops... for the first time in franchise history Brom...",
+                date: "January 2nd 2025",
+                link: "#",
+                image: "2024-champions.jpg"
             },
-            portfolio: [
-                {
-                    title: "Project One",
-                    description: "A modern web application built with cutting-edge technologies.",
-                    image: "project1.jpg",
-                    link: "#"
-                },
-                {
-                    title: "Project Two",
-                    description: "Mobile app design focusing on user experience and accessibility.",
-                    image: "project2.jpg",
-                    link: "#"
-                }
-            ],
-            blog: [
-                {
-                    title: "The Future of Web Design",
-                    excerpt: "Exploring upcoming trends and technologies in web development.",
-                    date: "2025-05-20",
-                    image: "blog1.jpg",
-                    link: "#"
-                },
-                {
-                    title: "CSS Grid vs Flexbox",
-                    excerpt: "A comprehensive comparison of modern CSS layout methods.",
-                    date: "2025-05-15",
-                    image: "blog2.jpg",
-                    link: "#"
-                }
-            ],
-            about: {
-                description: "I'm a passionate designer and developer with over 5 years of experience creating digital experiences. I love combining creativity with technology to solve real-world problems."
-            },
-            social: {
-                twitter: "https://twitter.com/yourusername",
-                linkedin: "https://linkedin.com/in/yourusername",
-                github: "https://github.com/yourusername",
-                email: "mailto:your.email@example.com"
+            articles: {
+                2024: [
+                    {
+                        category: "CHAMPIONS",
+                        title: "A LONG TIME COMING!—In His 9th Try, Brome Conquers The Bracket To Win His First FFB Title!",
+                        excerpt: "After eight straight seasons of playoff elimination, Brome finally breaks through...",
+                        image: "2024-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS", 
+                        title: "A Rivalry Final!—Sheer Dominance Pits Henry And Brome In An All-Time Star-Studded Finale.",
+                        excerpt: "Two powerhouse teams clash in an epic championship showdown...",
+                        image: "2024-finals.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "SEMIFINALS",
+                        title: "It's Raining Points!—Henry And Brome Cruise To The Semis. Shel and Cade Pull Off The Upsets.",
+                        excerpt: "High-scoring semifinals action leads to surprising upsets...",
+                        image: "2024-semis.jpg", 
+                        link: "#"
+                    },
+                    {
+                        category: "PLAYOFFS",
+                        title: "The 15th Annual Family Fun Ball Playoffs Commence. Henry Claims His First Regular-Season Title.",
+                        excerpt: "Playoff time arrives with Henry earning top seed honors...",
+                        image: "2024-playoffs.jpg",
+                        link: "#"
+                    }
+                ],
+                2023: [
+                    {
+                        category: "CHAMPIONS",
+                        title: "THE SLIPPER FITS!—Sako's Sleepers Complete The Cinderella Run From 8th Seed To 2nd FFB Title.",
+                        excerpt: "An incredible underdog story culminates in championship glory...",
+                        image: "2023-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS",
+                        title: "The Trades Pay Off!—Deadline Acquisitions Propel Garrett And Noah Into The Finale.",
+                        excerpt: "Strategic deadline moves pay dividends in the championship game...", 
+                        image: "2023-finals.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "SEMIFINALS", 
+                        title: "Is A Rematch Brewing?—Henry & Mac Both Advance To Back-to-back Semifinals.",
+                        excerpt: "Familiar faces return to the final four...",
+                        image: "2023-semis.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "PLAYOFFS",
+                        title: "The 14th Annual Family Fun Ball Playoffs Commence. The Peeps Claim The Regular-Season Title.",
+                        excerpt: "Another exciting playoff tournament begins...",
+                        image: "2023-playoffs.jpg", 
+                        link: "#"
+                    }
+                ],
+                2022: [
+                    {
+                        category: "CHAMPIONS",
+                        title: "YAYYY HENRY!—Henry Captures His First FFB Title In An Historic And Bizarre Two Week Finale.",
+                        excerpt: "A wild championship conclusion crowns a first-time winner...",
+                        image: "2022-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS", 
+                        title: "Flight vs Might—Henry Proves The Final Team To Stand Between Mac And His Three-Peat.",
+                        excerpt: "Can Mac complete the three-peat or will Henry spoil the party?",
+                        image: "2022-finals.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "SEMIFINALS",
+                        title: "The Quest For The Three-Peat Continues. B and Mac Faceoff In A 2021 Finals Rematch.",
+                        excerpt: "History repeats as familiar foes meet again...",
+                        image: "2022-semis.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "PLAYOFFS",
+                        title: "The 13th Annual Family Fun Ball Playoffs Commence. Noah Claims The Regular-Season Title.",
+                        excerpt: "The playoffs are set with Noah earning the top seed...",
+                        image: "2022-playoffs.jpg",
+                        link: "#"
+                    }
+                ],
+                2021: [
+                    {
+                        category: "CHAMPIONS", 
+                        title: "MAC ATTACK!—Mac Wins Back-To-Back Championships In Dominant Fashion.",
+                        excerpt: "Mac proves his first title was no fluke with a repeat performance...",
+                        image: "2021-champs.jpg",
+                        link: "#"
+                    },
+                    {
+                        category: "FINALS",
+                        title: "Championship Showdown—Mac and B Battle For Ultimate Glory.",
+                        excerpt: "Two titans clash in an epic championship battle...",
+                        image: "2021-finals.jpg", 
+                        link: "#"
+                    }
+                ]
             }
         };
 
-        // Scroll Animations
+        // Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Scroll Animation Observer
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -558,150 +647,92 @@
             });
         }, observerOptions);
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const elements = document.querySelectorAll('.parallax');
-            elements.forEach(element => {
-                const speed = element.dataset.speed || 0.5;
-                element.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-
-        // Load content from CMS
-        async function loadContent() {
+        // Load content
+        function loadContent() {
             try {
-                // For now, use sample data
-                // In production, you would fetch from your actual CMS source
                 const data = sampleData;
                 
-                // Update hero content
-                document.getElementById('hero-title').textContent = data.hero.title;
-                document.getElementById('hero-subtitle').textContent = data.hero.subtitle;
-                
-                // Load portfolio items
-                loadPortfolio(data.portfolio);
-                
-                // Load blog posts
-                loadBlog(data.blog);
-                
-                // Load about content
-                document.getElementById('about-description').textContent = data.about.description;
-                
-                // Load social links
-                document.getElementById('social-twitter').href = data.social.twitter;
-                document.getElementById('social-linkedin').href = data.social.linkedin;
-                document.getElementById('social-github').href = data.social.github;
-                document.getElementById('social-email').href = data.social.email;
+                // Load articles for each year
+                loadArticlesForYear('2024', data.articles[2024]);
+                loadArticlesForYear('2023', data.articles[2023]);
+                loadArticlesForYear('2022', data.articles[2022]);
+                loadArticlesForYear('2021', data.articles[2021]);
                 
             } catch (error) {
                 console.error('Error loading content:', error);
             }
         }
 
-        function loadPortfolio(portfolioData) {
-            const grid = document.getElementById('portfolio-grid');
-            grid.innerHTML = '';
+        function loadArticlesForYear(year, articles) {
+            const container = document.getElementById(`articles${year}`);
+            if (!container || !articles) return;
             
-            portfolioData.forEach((project, index) => {
-                const item = document.createElement('div');
-                item.className = 'portfolio-item fade-in';
-                item.style.animationDelay = `${index * 0.1}s`;
+            container.innerHTML = '';
+            
+            articles.forEach((article, index) => {
+                const articleElement = document.createElement('article');
+                articleElement.className = 'article-card fade-in';
+                articleElement.style.animationDelay = `${index * 0.1}s`;
                 
-                item.innerHTML = `
-                    <div class="portfolio-image">
-                        ${project.image ? `<img src="${project.image}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;">` : 'Project Image'}
+                articleElement.innerHTML = `
+                    <div class="article-image">
+                        ${article.image ? 
+                            `<img src="${article.image}" alt="${article.title}" loading="lazy">` : 
+                            `<div class="article-placeholder">${article.category} Image</div>`
+                        }
                     </div>
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">${project.title}</h3>
-                        <p class="portfolio-description">${project.description}</p>
+                    <div class="article-content">
+                        <div class="article-category">${article.category}</div>
+                        <h3 class="article-title">${article.title}</h3>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <div class="article-meta">
+                            <span>Read More</span>
+                            <span>${year}</span>
+                        </div>
                     </div>
                 `;
                 
-                if (project.link) {
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', () => {
-                        window.open(project.link, '_blank');
+                if (article.link) {
+                    articleElement.addEventListener('click', () => {
+                        window.open(article.link, '_blank');
                     });
                 }
                 
-                grid.appendChild(item);
-                observer.observe(item);
+                container.appendChild(articleElement);
+                observer.observe(articleElement);
             });
         }
 
-        function loadBlog(blogData) {
-            const grid = document.getElementById('blog-grid');
-            grid.innerHTML = '';
-            
-            blogData.forEach((post, index) => {
-                const item = document.createElement('div');
-                item.className = 'blog-item fade-in';
-                item.style.animationDelay = `${index * 0.1}s`;
-                
-                const date = new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                
-                item.innerHTML = `
-                    <div class="blog-image">
-                        ${post.image ? `<img src="${post.image}" alt="${post.title}" style="width:100%;height:100%;object-fit:cover;">` : 'Blog Image'}
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">${post.title}</h3>
-                        <p class="blog-date">${date}</p>
-                        <p class="blog-excerpt">${post.excerpt}</p>
-                    </div>
-                `;
-                
-                if (post.link) {
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', () => {
-                        window.open(post.link, '_blank');
-                    });
-                }
-                
-                grid.appendChild(item);
-                observer.observe(item);
-            });
-        }
-
-        // Initialize animations
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             // Observe elements for animations
-            document.querySelectorAll('.fade-in, .slide-left, .slide-right').forEach(el => {
+            document.querySelectorAll('.fade-in').forEach(el => {
                 observer.observe(el);
             });
             
             // Load content
             loadContent();
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
+
+        // CMS Integration - Replace with your actual data source
+        const CMS_CONFIG = {
+            // Update this with your Google Sheets CSV URL or local file path
+            dataSource: 'ffb-articles.csv'
+        };
     </script>
 </body>
 </html>
