@@ -1025,35 +1025,12 @@
             initializeApp();
         });
 
-        function initializeApp() {
-    // Check for saved session
-    const savedUser = localStorage.getItem('bracketUser');
-    if (savedUser) {
-        currentUser = JSON.parse(savedUser);
-        showMainApp();
-    }
-
-    // Event Listeners
-    document.getElementById('loginForm').addEventListener('submit', handleLogin);
-
-    // Navigation
-    document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            const page = e.target.dataset.page;
-            navigateToPage(page);
-        });
-    });
-
-    // Year selector
-    document.querySelectorAll('.year-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const year = e.target.dataset.year;
-            document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            currentYear = parseInt(year);
-            loadBrackets();
-        });
-    });
+   function initializeApp() {
+    // Skip login completely
+    currentUser = { username: 'TestUser', id: Date.now() };
+    localStorage.setItem('bracketUser', JSON.stringify(currentUser));
+    showMainApp();
+    navigateToPage('standings');
 
     // Start countdown
     updateCountdown();
