@@ -1068,21 +1068,27 @@
         // Authentication
         async function handleLogin(e) {
             e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // In production, validate against Google Sheets
-            // For demo, simple validation
-            if (username && password) {
-                currentUser = { username, id: Date.now() };
-                localStorage.setItem('bracketUser', JSON.stringify(currentUser));
-                showMainApp();
-                showMessage('loginMessage', 'Login successful!', 'success');
-                setTimeout(() => navigateToPage('standings'), 1000);
-            } else {
-                showMessage('loginMessage', 'Invalid credentials', 'error');
-            }
-        }
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // Simple hardcoded login for testing
+            const validUsers = [
+                { username: 'mac', password: 'hockey' },
+                { username: 'admin', password: '1234' }
+            ];
+
+    const match = validUsers.find(user => user.username === username && user.password === password);
+
+    if (match) {
+        currentUser = { username: match.username, id: Date.now() };
+        localStorage.setItem('bracketUser', JSON.stringify(currentUser));
+        showMainApp();
+        showMessage('loginMessage', 'Login successful!', 'success');
+        setTimeout(() => navigateToPage('standings'), 1000);
+    } else {
+        showMessage('loginMessage', 'Invalid username or password', 'error');
+    }
+}
 
         function showMainApp() {
             document.getElementById('nav').style.display = 'block';
