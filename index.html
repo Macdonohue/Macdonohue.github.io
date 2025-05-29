@@ -847,6 +847,9 @@
                 transform: rotate(360deg);
             }
         }
+        #login {
+    display: none !important;
+}
     </style>
 </head>
 <body>
@@ -892,7 +895,7 @@
         </div>
 
         <!-- Standings Page -->
-        <div id="standings" class="page">
+        <div id="standings" class="page active">
             <h2 style="font-size: 32px; margin-bottom: 20px;">LEADERBOARD</h2>
             <div class="standings-container">
                 <div class="standings-header">
@@ -1026,13 +1029,23 @@
         });
 
    function initializeApp() {
-    // Skip login completely
+    // Instantly log in a default user and show the app
     currentUser = { username: 'TestUser', id: Date.now() };
     localStorage.setItem('bracketUser', JSON.stringify(currentUser));
     showMainApp();
     navigateToPage('standings');
 
-    // Start countdown
+    // Year selector & countdown
+    document.querySelectorAll('.year-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const year = e.target.dataset.year;
+            document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentYear = parseInt(year);
+            loadBrackets();
+        });
+    });
+
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
