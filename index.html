@@ -1026,8 +1026,12 @@
         });
 
         function initializeApp() {
-            // Check for saved session
-            const savedUser = localStorage.getItem('bracketUser');
+            // Auto-login for development
+            currentUser = { username: 'TestUser', id: Date.now() };
+            localStorage.setItem('bracketUser', JSON.stringify(currentUser));
+            showMainApp();
+            navigateToPage('standings');
+            }
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
                 showMainApp();
