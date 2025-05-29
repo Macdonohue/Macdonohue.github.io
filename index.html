@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Fun Ball - Premium Sports Magazine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Avenir:wght@400;600;900&display=swap" rel="stylesheet">
+    <title>MacDonohue Bracket Challenge</title>
     <style>
         * {
             margin: 0;
@@ -13,895 +12,1472 @@
         }
 
         :root {
-            --ffb-green: #03601A;
-            --dark-green: #03601A;
-            --light-green: #b8c8bd;
-            --secondary-green: #5f8f65;
-            --light-grey: #acacac;
-            --dark-grey: #5d5d5d;
-            --accent-gold: #f4d03f;
-            --text-primary: #1a1a1a;
-            --text-secondary: var(--dark-grey);
-            --text-light: var(--light-grey);
-            --bg-white: #ffffff;
-            --bg-light: #f8f9fa;
-            --bg-dark: #0a0a0a;
-            --border-light: var(--light-grey);
-            --shadow-light: 0 2px 12px rgba(0,0,0,0.08);
-            --shadow-medium: 0 8px 32px rgba(0,0,0,0.12);
-            --shadow-large: 0 16px 64px rgba(0,0,0,0.15);
+            --primary-bg: #1a1a2e;
+            --secondary-bg: #16213e;
+            --accent-color: #0f3460;
+            --text-primary: #ffffff;
+            --text-secondary: #e94560;
+            --border-color: #3a3a3a;
+            --hover-color: #2a2a2a;
+            --success-green: #4CAF50;
+            --error-red: #f44336;
+            --tab-inactive: #666;
+            --tab-active: #333;
+            --table-header-bg: #e8e8e8;
+            --table-row-hover: rgba(255, 255, 255, 0.05);
         }
 
         body {
-            font-family: 'Tiempos Text', 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--primary-bg);
             color: var(--text-primary);
-            background: var(--bg-white);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Header Styles */
         .header {
-            background: var(--ffb-green);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-medium);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #fff;
+            padding: 15px 0;
+            text-align: center;
         }
 
-        .header.scrolled {
-            background: rgba(3, 96, 26, 0.95);
-            backdrop-filter: blur(20px);
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 36px;
+            color: #003876;
+            font-style: italic;
+            letter-spacing: 2px;
         }
 
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .trophy-header {
+            background-color: #000;
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            height: 80px;
+            gap: 20px;
         }
 
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            margin-right: 12px;
-            background-image: url('./ffb-logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: transparent;
-        }
-
-        .logo-icon {
+        .trophy-icon {
             width: 40px;
             height: 40px;
-            background: white;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #C0C0C0, #808080);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        .bracket-title {
+            font-size: 28px;
             font-weight: bold;
-            color: var(--ffb-green);
-            font-size: 16px;
-            margin-right: 12px;
-        }
-
-        .nav-menu {
-            display: flex;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
+            letter-spacing: 3px;
             color: white;
-            text-decoration: none;
-            font-family: 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Navigation Tabs */
+        .nav-container {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-tabs {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            padding: 0.5rem 0;
+            color: var(--tab-inactive);
             transition: all 0.3s ease;
             position: relative;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .nav-links a::after {
+        .nav-tab.active {
+            background-color: var(--tab-active);
+            color: white;
+        }
+
+        .nav-tab:hover:not(.active) {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .nav-tab::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
-            background: white;
+            height: 3px;
+            background-color: var(--text-secondary);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-tab.active::after {
             width: 100%;
         }
 
-        .nav-links a:hover {
-            color: rgba(255, 255, 255, 0.9);
+        /* Page Content */
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: calc(100vh - 200px);
+            animation: fadeIn 0.5s ease;
         }
 
-        /* Team Circles Section */
-        .team-circles {
-            background: var(--bg-dark);
-            padding: 2rem 2rem 1rem;
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            animation: slideUp 0.5s ease;
+        }
+
+        .login-form h2 {
             text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: white;
         }
 
-        .team-circles h2 {
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ccc;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--text-secondary);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--text-secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .circles-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            max-width: 600px;
-            margin: 0 auto;
+        .submit-btn:hover {
+            background-color: #d63447;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
         }
 
-        .team-circle {
-            width: 80px;
-            height: 80px;
-            background: var(--dark-grey);
-            border-radius: 50%;
-            display: flex;
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Standings Table */
+        .standings-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .standings-header {
+            background-color: var(--table-header-bg);
+            color: #333;
+            font-weight: bold;
+            display: grid;
+            grid-template-columns: 50px 50px 1fr repeat(8, 60px);
+            padding: 15px;
+            font-size: 12px;
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .standings-row {
+            display: grid;
+            grid-template-columns: 50px 50px 1fr repeat(8, 60px);
+            padding: 15px;
             align-items: center;
-            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .team-circle::before {
+        .standings-row::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--ffb-green), var(--secondary-green));
-            opacity: 0;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(233, 69, 96, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        .team-circle:hover::before {
-            opacity: 1;
+        .standings-row:hover {
+            background-color: var(--table-row-hover);
+            transform: translateX(5px);
         }
 
-        .team-circle:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: var(--shadow-medium);
+        .standings-row:hover::before {
+            left: 100%;
         }
 
-        .team-circle span {
-            color: white;
-            font-weight: 600;
-            font-size: 0.75rem;
-            position: relative;
-            z-index: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .team-circle:hover span {
-            transform: scale(1.1);
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Article - Latest Issue Style */
-        .latest-issue {
-            background: var(--bg-dark);
-            color: white;
-            padding: 4rem 2rem;
+        .rank {
+            font-size: 20px;
+            font-weight: bold;
             text-align: center;
         }
 
-        .latest-issue h2 {
-            font-family: 'Tiempos Headline', 'Georgia', serif;
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
+        .team-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        .issue-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .issue-cover {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-large);
-        }
-
-        .issue-cover:hover {
-            transform: scale(1.02) rotateY(5deg);
-            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
-        }
-
-        .cover-image {
-            width: 100%;
-            height: 600px;
-            background: linear-gradient(135deg, var(--ffb-green), var(--secondary-green));
+        .player-name {
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            gap: 10px;
         }
 
-        .cover-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            padding: 3rem 2rem 2rem;
-            color: white;
-        }
-
-        .cover-title {
-            font-family: 'Tiempos Headline', 'Georgia', serif;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-
-        .cover-subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .issue-info {
-            text-align: left;
-        }
-
-        .issue-meta {
-            color: var(--accent-gold);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .issue-title {
-            font-family: 'Tiempos Headline', 'Georgia', serif;
-            font-size: 2.5rem;
-            font-weight: 300;
-            line-height: 1.3;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .issue-excerpt {
-            font-family: 'Tiempos Text', 'Georgia', serif;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        .read-article-btn {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-transform: uppercase;
-        }
-
-        .read-article-btn:hover {
-            background: #f1c40f;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(244, 208, 63, 0.3);
-        }
-
-        /* Archive Sections */
-        .archive-section {
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        .archive-section:nth-child(even) {
-            background: var(--bg-light);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .year-title {
-            font-family: 'Tiempos Headline', 'Georgia', serif;
-            font-size: 4rem;
-            font-weight: 300;
-            color: var(--ffb-green);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .year-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent-gold);
-        }
-
-        /* Article Grid Layouts */
-        .articles-grid {
-            display: grid;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Standard Grid Layout */
-        .standard-grid {
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .article-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-light);
-            height: fit-content;
-        }
-
-        .article-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .article-image {
-            width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, var(--ffb-green), var(--secondary-green));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .article-content {
-            padding: 2rem;
-        }
-
-        .article-category {
-            color: var(--ffb-green);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .article-title {
-            font-family: 'Tiempos Headline', 'Georgia', serif;
-            font-size: 1.3rem;
-            font-weight: bold;
-            line-height: 1.4;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            text-transform: uppercase;
-        }
-
-        .article-excerpt {
-            font-family: 'Tiempos Text', 'Georgia', serif;
-            font-size: 0.95rem;
+        .player-name:hover {
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
         }
 
-        .article-meta {
+        .stat {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .second-place-logo {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        /* Bracket Display */
+        .bracket-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease;
+        }
+
+        .bracket-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
         }
 
-        /* See Archive Button */
-        .see-archive {
-            text-align: center;
-            margin: 4rem 0;
+        .bracket-player {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: bold;
         }
 
-        .archive-btn {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
+        .bracket-stats {
+            display: flex;
+            gap: 30px;
+            font-size: 14px;
+        }
+
+        .bracket-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            padding: 20px;
+            overflow-x: auto;
+            min-height: 600px;
+        }
+
+        .conference {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .round {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+        }
+
+        .matchup {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .matchup:hover {
+            border-color: var(--text-secondary);
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.2);
+        }
+
+        .team-slot {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            margin: 4px 0;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-transform: uppercase;
-            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .archive-btn:hover {
-            background: #f1c40f;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
+        .team-slot.winner {
+            background-color: var(--success-green);
+            color: white;
+        }
+
+        .team-slot.loser {
+            opacity: 0.5;
+            background-color: var(--error-red);
+        }
+
+        .team-slot:hover:not(.loser) {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .seed {
+            font-weight: bold;
+            min-width: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .games-selector {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .games-btn {
+            padding: 5px 10px;
+            border: 1px solid var(--border-color);
+            background-color: transparent;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        .games-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .games-btn.selected {
+            background-color: var(--text-secondary);
+            border-color: var(--text-secondary);
+        }
+
+        /* Trophy Container */
+        .trophy-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .stanley-cup {
+            width: 120px;
+            height: 150px;
+            background: linear-gradient(135deg, #C0C0C0, #808080);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            clip-path: polygon(40% 0%, 60% 0%, 65% 10%, 65% 40%, 80% 50%, 80% 70%, 60% 100%, 40% 100%, 20% 70%, 20% 50%, 35% 40%, 35% 10%);
+        }
+
+        .stanley-cup-winner {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Year Selector */
+        .year-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .year-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--border-color);
+            background-color: transparent;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .year-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .year-btn.active {
+            background-color: var(--text-secondary);
+            border-color: var(--text-secondary);
+        }
+
+        /* History Page */
+        .history-entry {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: 80px auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .history-entry::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(233, 69, 96, 0.3), transparent);
+            transition: all 0.5s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .history-entry:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .history-entry:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .year-badge {
+            background-color: var(--text-secondary);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .champion-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .champion-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .champion-name:hover {
+            color: var(--text-secondary);
+        }
+
+        .champion-stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            text-align: center;
+        }
+
+        .champion-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Create Bracket Form */
+        .create-bracket-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .bracket-builder {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .create-matchup {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .create-matchup:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .team-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .team-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-secondary);
+        }
+
+        .team-option.selected {
+            background-color: var(--success-green);
+            border-color: var(--success-green);
+        }
+
+        .team-option input[type="radio"] {
+            display: none;
+        }
+
+        /* Countdown Timer */
+        .countdown-container {
+            background-color: rgba(233, 69, 96, 0.1);
+            border: 2px solid var(--text-secondary);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .countdown-label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .countdown-timer {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--text-secondary);
+            font-family: 'Courier New', monospace;
         }
 
         /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .issue-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-
-            .circles-grid {
-                gap: 1.5rem;
-            }
-
-            .team-circle {
-                width: 100px;
-                height: 100px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Error/Success Messages */
+        .message {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .error-message {
+            background-color: rgba(244, 67, 54, 0.1);
+            border: 1px solid var(--error-red);
+            color: var(--error-red);
+        }
+
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--success-green);
+            color: var(--success-green);
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--ffb-green);
-                padding: 1rem 2rem;
-                box-shadow: var(--shadow-medium);
-            }
-
-            .nav-menu.active {
-                display: block;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
-            }
-
-            .nav-links a {
-                padding: 0.75rem 0;
-                width: 100%;
-                border-bottom: 1px solid rgba(255,255,255,0.2);
-            }
-            
             .logo {
-                font-size: 1.4rem;
+                font-size: 28px;
             }
-            
-            .logo-icon {
-                width: 32px;
-                height: 32px;
+
+            .bracket-title {
+                font-size: 20px;
+            }
+
+            .nav-tab {
                 font-size: 14px;
-                margin-right: 8px;
+                padding: 12px 10px;
+                letter-spacing: 0;
             }
 
-            .header-content {
-                padding: 0 1rem;
+            .standings-header,
+            .standings-row {
+                grid-template-columns: 40px 40px 1fr 50px 50px 50px;
+                font-size: 12px;
             }
 
-            .main-content {
-                padding: 0 1rem;
+            .standings-header > :nth-child(n+7),
+            .standings-row > :nth-child(n+7) {
+                display: none;
             }
 
-            .team-circles {
-                padding: 1.5rem 1rem 0.5rem;
-            }
-
-            .team-circles h2 {
-                font-size: 1.5rem;
-            }
-
-            .circles-grid {
-                gap: 1rem;
-            }
-
-            .team-circle {
-                width: 60px;
-                height: 60px;
-            }
-
-            .team-circle span {
-                font-size: 0.65rem;
-            }
-
-            .latest-issue {
-                padding: 3rem 1rem;
-            }
-
-            .latest-issue h2 {
-                font-size: 2rem;
-            }
-
-            .year-title {
-                font-size: 2.5rem;
-            }
-
-            .archive-section {
-                padding: 3rem 0;
-            }
-
-            .standard-grid {
+            .bracket-visual {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .trophy-container {
+                order: -1;
+            }
+
+            .year-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .history-entry {
+                grid-template-columns: 60px 1fr;
+                gap: 15px;
+            }
+
+            .champion-stats {
+                grid-column: span 2;
+                margin-top: 15px;
+            }
+
+            .bracket-builder {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-timer {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-content {
+                padding: 10px;
+            }
+
+            .login-form {
+                padding: 20px;
+            }
+
+            .form-group input {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--text-secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header-content">
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <div class="logo">
-                <div class="logo-icon"></div>
-                  FAMILY FUN BALL
-                </div>
-            
-            <nav class="nav-menu" id="navMenu">
-                <ul class="nav-links">
-                    <li><a href="#newsletters">Newsletters</a></li>
-                    <li><a href="#teams">Teams</a></li>
-                    <li><a href="#history">History</a></li>
-                    <li><a href="#playoffs">Playoffs</a></li>
-                </ul>
-            </nav>
-        </div>
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="logo">MacDonohue</h1>
     </header>
 
-    <!-- Team Circles Section -->
-    <section class="team-circles" id="teams">
-        <h2>League Teams</h2>
-        <div class="circles-grid">
-            <div class="team-circle" data-team="team1">
-                <span>TEAM 1</span>
-            </div>
-            <div class="team-circle" data-team="team2">
-                <span>TEAM 2</span>
-            </div>
-            <div class="team-circle" data-team="team3">
-                <span>TEAM 3</span>
-            </div>
-            <div class="team-circle" data-team="team4">
-                <span>TEAM 4</span>
-            </div>
-            <div class="team-circle" data-team="team5">
-                <span>TEAM 5</span>
+    <div class="trophy-header">
+        <div class="trophy-icon"></div>
+        <h2 class="bracket-title">BRACKET CHALLENGE</h2>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container" id="nav" style="display: none;">
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-page="standings">STANDINGS</button>
+            <button class="nav-tab" data-page="brackets">BRACKETS</button>
+            <button class="nav-tab" data-page="history">HISTORY</button>
+            <button class="nav-tab" data-page="create">CREATE</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page-content">
+        <!-- Login Page -->
+        <div id="login" class="page active">
+            <div class="login-container">
+                <form class="login-form" id="loginForm">
+                    <h2>Login to Continue</h2>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                    <div id="loginMessage"></div>
+                </form>
             </div>
         </div>
-    </section>
 
-    <!-- Latest Issue Section -->
-    <section class="latest-issue" id="latest">
-        <h2>Latest Issue</h2>
-        <div class="issue-container">
-            <div class="issue-cover">
-                <div class="cover-image">
-                    <div class="cover-overlay">
-                        <div class="cover-title">YEAR OF THE CHOW!</div>
-                        <div class="cover-subtitle">Championship Victory</div>
+        <!-- Standings Page -->
+        <div id="standings" class="page">
+            <h2 style="font-size: 32px; margin-bottom: 20px;">LEADERBOARD</h2>
+            <div class="standings-container">
+                <div class="standings-header">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>PTS</div>
+                    <div>POSS</div>
+                    <div>TB</div>
+                    <div>QF</div>
+                    <div>SF</div>
+                    <div>F</div>
+                    <div>SC</div>
+                    <div>2ND</div>
+                </div>
+                <div id="standingsBody">
+                    <div class="loading">
+                        <div class="spinner"></div>
                     </div>
                 </div>
             </div>
-            <div class="issue-info">
-                <div class="issue-meta">January 2025 Issue</div>
-                <h3 class="issue-title">In His Ninth Try, Brome Conquers The League</h3>
-                <p class="issue-excerpt">After eight straight seasons of playoff elimination, Brome came into his 2024 Season with the belief of a Cowboys fan. "This is my year!" On August 30th he drafted his team consisting of an overlooked Lions QB and his favorite star WR target...</p>
-                <button class="read-article-btn">Read Full Article</button>
+        </div>
+
+        <!-- Brackets Page -->
+        <div id="brackets" class="page">
+            <h2 style="font-size: 32px; margin-bottom: 20px;">BRACKETS</h2>
+            <div class="year-selector">
+                <button class="year-btn" data-year="2024">2024</button>
+                <button class="year-btn active" data-year="2025">2025</button>
+            </div>
+            <div id="bracketsContainer">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Main Content -->
-    <main class="main-content" id="archive">
-        <!-- 2024 All Issues Section -->
-        <section class="archive-section fade-in">
-            <div class="section-header">
-                <h2 class="year-title">2024</h2>
+        <!-- History Page -->
+        <div id="history" class="page">
+            <h2 style="font-size: 32px; margin-bottom: 20px;">PAST CHAMPIONS</h2>
+            <div id="historyContainer">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
             </div>
-            
-            <div class="articles-grid standard-grid">
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Champions</div>
-                        <h3 class="article-title">A LONG TIME COMING!</h3>
-                        <p class="article-excerpt">In His 9th Try, Brome Conquers The Bracket To Win His First FFB Title!</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>January 2025</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Finals</div>
-                        <h3 class="article-title">A Rivalry Final!</h3>
-                        <p class="article-excerpt">Sheer Dominance Pits Henry And Brome In An All-Time Star-Studded Finale.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2024</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Semifinals</div>
-                        <h3 class="article-title">It's Raining Points!</h3>
-                        <p class="article-excerpt">Henry And Brome Cruise To The Semis. Shel and Cade Pull Off The Upsets.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2024</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Playoffs</div>
-                        <h3 class="article-title">The 15th Annual Family Fun Ball Playoffs Commence</h3>
-                        <p class="article-excerpt">Henry Claims His First Regular-Season Title.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2024</span>
-                        </div>
-                    </div>
-                </article>
+            <h2 style="font-size: 32px; margin: 40px 0 20px;">WINNING BRACKETS</h2>
+            <div id="winningBracketsContainer">
+                <!-- Winning brackets visualization will be populated here -->
             </div>
-        </section>
+        </div>
 
-        <!-- 2023 Section -->
-        <section class="archive-section fade-in">
-            <div class="section-header">
-                <h2 class="year-title">2023</h2>
-            </div>
+        <!-- Create Bracket Page -->
+        <div id="create" class="page">
+            <h2 style="font-size: 32px; margin-bottom: 20px;">PICK YOUR BRACKET!</h2>
             
-            <div class="articles-grid standard-grid">
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Champions</div>
-                        <h3 class="article-title">THE SLIPPER FITS!</h3>
-                        <p class="article-excerpt">Sako's Sleepers Complete The Cinderella Run From 8th Seed To 2nd FFB Title.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>January 2024</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Finals</div>
-                        <h3 class="article-title">The Trades Pay Off!</h3>
-                        <p class="article-excerpt">Deadline Acquisitions Propel Garrett And Noah Into The Finale.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2023</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Semifinals</div>
-                        <h3 class="article-title">Is A Rematch Brewing?</h3>
-                        <p class="article-excerpt">Henry & Mac Both Advance To Back-to-back Semifinals.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2023</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Playoffs</div>
-                        <h3 class="article-title">The 14th Annual Family Fun Ball Playoffs Commence</h3>
-                        <p class="article-excerpt">The Peeps Claim The Regular-Season Title.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2023</span>
-                        </div>
-                    </div>
-                </article>
+            <div class="countdown-container">
+                <div class="countdown-label">Deadline to submit brackets:</div>
+                <div class="countdown-timer" id="countdown">Loading...</div>
             </div>
-        </section>
 
-        <!-- 2022 Section -->
-        <section class="archive-section fade-in">
-            <div class="section-header">
-                <h2 class="year-title">2022</h2>
+            <div class="create-bracket-container">
+                <form id="createBracketForm">
+                    <div class="bracket-builder" id="bracketBuilder">
+                        <!-- Dynamic bracket builder will be inserted here -->
+                    </div>
+                    
+                    <div class="form-group" style="max-width: 400px; margin: 0 auto;">
+                        <label for="bracketName">NAME</label>
+                        <input type="text" id="bracketName" required placeholder="Enter your bracket name">
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="submit-btn" style="max-width: 200px;">SUBMIT</button>
+                    </div>
+                    
+                    <div id="createMessage"></div>
+                </form>
             </div>
-            
-            <div class="articles-grid standard-grid">
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Champions</div>
-                        <h3 class="article-title">YAYYY HENRY!</h3>
-                        <p class="article-excerpt">Henry Captures His First FFB Title In An Historic And Bizarre Two Week Finale.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>January 2023</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Finals</div>
-                        <h3 class="article-title">Flight vs Might</h3>
-                        <p class="article-excerpt">Henry Proves The Final Team To Stand Between Mac And His Three-Peat.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2022</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Semifinals</div>
-                        <h3 class="article-title">The Quest For The Three-Peat Continues</h3>
-                        <p class="article-excerpt">B and Mac Faceoff In A 2021 Finals Rematch.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2022</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Playoffs</div>
-                        <h3 class="article-title">The 13th Annual Family Fun Ball Playoffs Commence</h3>
-                        <p class="article-excerpt">Noah Claims The Regular-Season Title.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>December 2022</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
+        </div>
+    </main>
 
-        <!-- 2021 Section -->
-        <section class="archive-section fade-in">
-            <div class="section-header">
-                <h2 class="year-title">2021</h2>
-            </div>
+    <script>
+        // Configuration
+        const CONFIG = {
+            GOOGLE_SHEETS_API_KEY: 'YOUR_API_KEY_HERE',
+            SPREADSHEET_ID: 'YOUR_SPREADSHEET_ID_HERE',
+            DEADLINE: new Date('2025-04-16T19:00:00-04:00'), // April 16, 2025, 7 PM ET
+            POINTS: {
+                QF: 10,
+                SF: 20,
+                F: 40,
+                SC: 80
+            }
+        };
+
+        // NHL Teams Data (2024-25 season matchups based on screenshots)
+        const TEAMS = {
+            // Western Conference
+            'WPG': { name: 'Winnipeg Jets', seed: 1, conference: 'West', logo: 'https://example.com/wpg.png' },
+            'DAL': { name: 'Dallas Stars', seed: 2, conference: 'West', logo: 'https://example.com/dal.png' },
+            'COL': { name: 'Colorado Avalanche', seed: 3, conference: 'West', logo: 'https://example.com/col.png' },
+            'STL': { name: 'St. Louis Blues', seed: 4, conference: 'West', logo: 'https://example.com/stl.png' },
+            'VGK': { name: 'Vegas Golden Knights', seed: 1, conference: 'West', logo: 'https://example.com/vgk.png' },
+            'LAK': { name: 'Los Angeles Kings', seed: 2, conference: 'West', logo: 'https://example.com/lak.png' },
+            'EDM': { name: 'Edmonton Oilers', seed: 3, conference: 'West', logo: 'https://example.com/edm.png' },
+            'MIN': { name: 'Minnesota Wild', seed: 4, conference: 'West', logo: 'https://example.com/min.png' },
             
-            <div class="articles-grid standard-grid">
-                <article class="article-card">
-                    <div class="article-image"></div>
-                    <div class="article-content">
-                        <div class="article-category">Champions</div>
-                        <h3 class="article-title">MAC ATTACK!</h3>
-                        <p class="article-excerpt">Mac Wins Back-To-Back Championships In Dominant Fashion.</p>
-                        <div class="article-meta">
-                            <span>Read More</span>
-                            <span>January 2022</span>
+            // Eastern Conference
+            'WSH': { name: 'Washington Capitals', seed: 1, conference: 'East', logo: 'https://example.com/wsh.png' },
+            'CAR': { name: 'Carolina Hurricanes', seed: 2, conference: 'East', logo: 'https://example.com/car.png' },
+            'NJD': { name: 'New Jersey Devils', seed: 3, conference: 'East', logo: 'https://example.com/njd.png' },
+            'MTL': { name: 'Montreal Canadiens', seed: 4, conference: 'East', logo: 'https://example.com/mtl.png' },
+            'TOR': { name: 'Toronto Maple Leafs', seed: 1, conference: 'East', logo: 'https://example.com/tor.png' },
+            'TBL': { name: 'Tampa Bay Lightning', seed: 2, conference: 'East', logo: 'https://example.com/tbl.png' },
+            'FLA': { name: 'Florida Panthers', seed: 3, conference: 'East', logo: 'https://example.com/fla.png' },
+            'OTT': { name: 'Ottawa Senators', seed: 4, conference: 'East', logo: 'https://example.com/ott.png' }
+        };
+
+        // State Management
+        let currentUser = null;
+        let isAuthenticated = false;
+        let currentYear = 2025;
+        let userBracket = null;
+        let allBrackets = [];
+        let standings = [];
+        let history = [];
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp();
+        });
+
+        function initializeApp() {
+            // Check for saved session
+            const savedUser = localStorage.getItem('bracketUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showMainApp();
+            }
+
+            // Event Listeners
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('createBracketForm').addEventListener('submit', handleCreateBracket);
+            
+            // Navigation
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    const page = e.target.dataset.page;
+                    navigateToPage(page);
+                });
+            });
+
+            // Year selector
+            document.querySelectorAll('.year-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const year = e.target.dataset.year;
+                    document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentYear = parseInt(year);
+                    loadBrackets();
+                });
+            });
+
+            // Start countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Authentication
+        async function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // In production, validate against Google Sheets
+            // For demo, simple validation
+            if (username && password) {
+                currentUser = { username, id: Date.now() };
+                localStorage.setItem('bracketUser', JSON.stringify(currentUser));
+                showMainApp();
+                showMessage('loginMessage', 'Login successful!', 'success');
+                setTimeout(() => navigateToPage('standings'), 1000);
+            } else {
+                showMessage('loginMessage', 'Invalid credentials', 'error');
+            }
+        }
+
+        function showMainApp() {
+            document.getElementById('nav').style.display = 'block';
+            isAuthenticated = true;
+        }
+
+        // Navigation
+        function navigateToPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+            
+            // Update nav tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.page === pageName) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // Load page data
+            switch(pageName) {
+                case 'standings':
+                    loadStandings();
+                    break;
+                case 'brackets':
+                    loadBrackets();
+                    break;
+                case 'history':
+                    loadHistory();
+                    break;
+                case 'create':
+                    loadCreateBracket();
+                    break;
+            }
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const diff = CONFIG.DEADLINE - now;
+            
+            if (diff <= 0) {
+                document.getElementById('countdown').textContent = 'BRACKETS LOCKED';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${days}d ${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s`;
+        }
+
+        // Load Standings
+        async function loadStandings() {
+            // In production, fetch from Google Sheets
+            // For demo, use sample data
+            const sampleStandings = [
+                { rank: 1, username: 'CHAFE', team: 'EDM', points: 130, possible: 290, tiebreak: 4, qf: 70, sf: 60, f: 0, sc: 0, second: 'FLA' },
+                { rank: 2, username: 'BD COUG', team: 'TOR', points: 120, possible: 160, tiebreak: 3, qf: 60, sf: 60, f: 0, sc: 0, second: 'DAL' },
+                { rank: 3, username: 'GRANGRAN', team: 'CAR', points: 110, possible: 230, tiebreak: 2, qf: 70, sf: 40, f: 0, sc: 0, second: 'COL' },
+                { rank: 4, username: 'K GRAWER', team: 'EDM', points: 100, possible: 260, tiebreak: 3, qf: 60, sf: 40, f: 0, sc: 0, second: 'CAR' },
+                { rank: 5, username: 'BASS PRO', team: 'WSH', points: 100, possible: 140, tiebreak: 2, qf: 60, sf: 40, f: 0, sc: 0, second: 'DAL' },
+                { rank: 6, username: 'PDM', team: 'MIN', points: 100, possible: 100, tiebreak: 1, qf: 60, sf: 40, f: 0, sc: 0, second: 'WSH' },
+                { rank: 7, username: 'KELLAN', team: 'DAL', points: 90, possible: 210, tiebreak: 2, qf: 50, sf: 40, f: 0, sc: 0, second: 'TBL' },
+                { rank: 8, username: 'EVAN', team: 'WPG', points: 90, possible: 90, tiebreak: 3, qf: 70, sf: 20, f: 0, sc: 0, second: 'TOR' },
+                { rank: 9, username: 'ANDREW', team: 'EDM', points: 80, possible: 200, tiebreak: 3, qf: 60, sf: 20, f: 0, sc: 0, second: 'WSH' },
+                { rank: 9, username: 'TARYN', team: 'CAR', points: 80, possible: 200, tiebreak: 3, qf: 60, sf: 20, f: 0, sc: 0, second: 'MIN' },
+                { rank: 11, username: 'TIMMY', team: 'FLA', points: 80, possible: 200, tiebreak: 1, qf: 60, sf: 20, f: 0, sc: 0, second: 'VGK' },
+                { rank: 12, username: 'BROME', team: 'VGK', points: 80, possible: 120, tiebreak: 0, qf: 40, sf: 40, f: 0, sc: 0, second: 'CAR' },
+                { rank: 13, username: 'COOL GUY', team: 'TBL', points: 80, possible: 80, tiebreak: 2, qf: 60, sf: 20, f: 0, sc: 0, second: 'COL' },
+                { rank: 14, username: 'RICH', team: 'TBL', points: 80, possible: 80, tiebreak: 1, qf: 40, sf: 40, f: 0, sc: 0, second: 'COL' }
+            ];
+            
+            const standingsHTML = sampleStandings.map(player => `
+                <div class="standings-row">
+                    <div class="rank">${player.rank}</div>
+                    <img src="${TEAMS[player.team].logo}" alt="${player.team}" class="team-logo">
+                    <a href="#" class="player-name" onclick="viewBracket('${player.username}'); return false;">
+                        ${player.username}
+                    </a>
+                    <div class="stat">${player.points}</div>
+                    <div class="stat">${player.possible}</div>
+                    <div class="stat">+${player.tiebreak}</div>
+                    <div class="stat">${player.qf}</div>
+                    <div class="stat">${player.sf}</div>
+                    <div class="stat">${player.f}</div>
+                    <div class="stat">${player.sc}</div>
+                    <div class="stat">
+                        <img src="${TEAMS[player.second].logo}" alt="${player.second}" class="second-place-logo">
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('standingsBody').innerHTML = standingsHTML;
+        }
+
+        // Load Brackets
+        async function loadBrackets() {
+            // In production, fetch from Google Sheets
+            // For demo, show sample brackets
+            const sampleBrackets = [
+                {
+                    username: 'CHAFE',
+                    team: 'EDM',
+                    points: 130,
+                    tiebreak: 4,
+                    possible: 290,
+                    picks: {
+                        west_qf: [
+                            { winner: 'WPG', loser: 'STL', games: 6 },
+                            { winner: 'DAL', loser: 'COL', games: 7 },
+                            { winner: 'VGK', loser: 'MIN', games: 6 },
+                            { winner: 'EDM', loser: 'LAK', games: 6 }
+                        ],
+                        east_qf: [
+                            { winner: 'WSH', loser: 'MTL', games: 6 },
+                            { winner: 'NJD', loser: 'CAR', games: 5 },
+                            { winner: 'TOR', loser: 'OTT', games: 7 },
+                            { winner: 'FLA', loser: 'TBL', games: 5 }
+                        ],
+                        west_sf: [
+                            { winner: 'DAL', loser: 'WPG' },
+                            { winner: 'EDM', loser: 'VGK' }
+                        ],
+                        east_sf: [
+                            { winner: 'NJD', loser: 'WSH' },
+                            { winner: 'FLA', loser: 'TOR' }
+                        ],
+                        west_f: { winner: 'EDM', loser: 'DAL' },
+                        east_f: { winner: 'FLA', loser: 'NJD' },
+                        stanley_cup: { winner: 'EDM', loser: 'FLA' }
+                    }
+                },
+                {
+                    username: 'BD COUG',
+                    team: 'TOR',
+                    points: 120,
+                    tiebreak: 3,
+                    possible: 160,
+                    picks: {
+                        west_qf: [
+                            { winner: 'WPG', loser: 'STL', games: 6 },
+                            { winner: 'DAL', loser: 'COL', games: 7 },
+                            { winner: 'VGK', loser: 'MIN', games: 5 },
+                            { winner: 'EDM', loser: 'LAK', games: 6 }
+                        ],
+                        east_qf: [
+                            { winner: 'MTL', loser: 'WSH', games: 7 },
+                            { winner: 'CAR', loser: 'NJD', games: 6 },
+                            { winner: 'TOR', loser: 'OTT', games: 6 },
+                            { winner: 'TBL', loser: 'FLA', games: 7 }
+                        ],
+                        west_sf: [
+                            { winner: 'DAL', loser: 'WPG' },
+                            { winner: 'EDM', loser: 'VGK' }
+                        ],
+                        east_sf: [
+                            { winner: 'CAR', loser: 'MTL' },
+                            { winner: 'TOR', loser: 'TBL' }
+                        ],
+                        west_f: { winner: 'DAL', loser: 'EDM' },
+                        east_f: { winner: 'TOR', loser: 'CAR' },
+                        stanley_cup: { winner: 'TOR', loser: 'DAL' }
+                    }
+                }
+            ];
+            
+            const bracketsHTML = sampleBrackets.map(bracket => `
+                <div class="bracket-container">
+                    <div class="bracket-header">
+                        <div class="bracket-player">
+                            <img src="${TEAMS[bracket.team].logo}" alt="${bracket.team}" class="team-logo">
+                            ${bracket.username}
+                        </div>
+                        <div class="bracket-stats">
+                            <div>POINTS: <strong>${bracket.points}</strong></div>
+                            <div>TIEBREAK: <strong>+${bracket.tiebreak}</strong></div>
+                            <div>POSSIBLE: <strong>${bracket.possible}</strong></div>
                         </div>
                     </div>
-                </article>
+                    <div class="bracket-visual">
+                        ${generateBracketVisual(bracket.picks)}
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('bracketsContainer').innerHTML = bracketsHTML;
+        }
+
+        // Generate Bracket Visual
+        function generateBracketVisual(picks) {
+            return `
+                <div class="conference">
+                    <h3 style="text-align: center; margin-bottom: 20px;">WESTERN CONFERENCE</h3>
+                    <div class="round">
+                        ${picks.west_qf.map((match, i) => `
+                            <div class="matchup">
+                                <div class="team-slot ${match.winner === Object.keys(TEAMS)[i*2] ? 'winner' : 'loser'}">
+                                    <span class="seed">${TEAMS[Object.keys(TEAMS)[i*2]].seed}</span>
+                                    <img src="${TEAMS[Object.keys(TEAMS)[i*2]].logo}" alt="" style="width: 20px; height: 20px;">
+                                    <span>${Object.keys(TEAMS)[i*2]}</span>
+                                </div>
+                                <div class="team-slot ${match.winner === Object.keys(TEAMS)[i*2+1] ? 'winner' : 'loser'}">
+                                    <span class="seed">${TEAMS[Object.keys(TEAMS)[i*2+1]].seed}</span>
+                                    <img src="${TEAMS[Object.keys(TEAMS)[i*2+1]].logo}" alt="" style="width: 20px; height: 20px;">
+                                    <span>${Object.keys(TEAMS)[i*2+1]}</span>
+                                </div>
+                                <div class="games-selector">
+                                    <span style="color: #999; font-size: 12px;">Games: ${match.games}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="trophy-container">
+                    <div class="stanley-cup"></div>
+                    <div class="stanley-cup-winner">
+                        <img src="${TEAMS[picks.stanley_cup.winner].logo}" alt="" style="width: 40px; height: 40px;">
+                        <div>${picks.stanley_cup.winner}</div>
+                    </div>
+                </div>
+                
+                <div class="conference">
+                    <h3 style="text-align: center; margin-bottom: 20px;">EASTERN CONFERENCE</h3>
+                    <div class="round">
+                        ${picks.east_qf.map((match, i) => `
+                            <div class="matchup">
+                                <div class="team-slot ${match.winner === Object.keys(TEAMS)[i*2+8] ? 'winner' : 'loser'}">
+                                    <span class="seed">${TEAMS[Object.keys(TEAMS)[i*2+8]].seed}</span>
+                                    <img src="${TEAMS[Object.keys(TEAMS)[i*2+8]].logo}" alt="" style="width: 20px; height: 20px;">
+                                    <span>${Object.keys(TEAMS)[i*2+8]}</span>
+                                </div>
+                                <div class="team-slot ${match.winner === Object.keys(TEAMS)[i*2+9] ? 'winner' : 'loser'}">
+                                    <span class="seed">${TEAMS[Object.keys(TEAMS)[i*2+9]].seed}</span>
+                                    <img src="${TEAMS[Object.keys(TEAMS)[i*2+9]].logo}" alt="" style="width: 20px; height: 20px;">
+                                    <span>${Object.keys(TEAMS)[i*2+9]}</span>
+                                </div>
+                                <div class="games-selector">
+                                    <span style="color: #999; font-size: 12px;">Games: ${match.games}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load History
+        async function loadHistory() {
+            // In production, fetch from Google Sheets
+            const sampleHistory = [
+                { year: 2024, winner: 'GRANGRAN', team: 'FLA', points: 230, tiebreak: 1, qf: 70, sf: 40, f: 40, sc: 80, second: 'COL' },
+                { year: 2023, winner: 'GRANGRAN', team: 'CAR', points: 170, tiebreak: 2, qf: 70, sf: 60, f: 40, sc: 0, second: 'VGK' },
+                { year: 2022, winner: 'TIMMY', team: 'COL', points: 220, tiebreak: 1, qf: 80, sf: 20, f: 40, sc: 80, second: 'FLA' },
+                { year: 2021, winner: 'GARRETT', team: 'PIT', points: 130, tiebreak: 2, qf: 50, sf: 40, f: 40, sc: 0, second: 'TBL' },
+                { year: 2020, winner: 'GARRETT', team: 'TBL', points: 210, tiebreak: 0, qf: 50, sf: 40, f: 40, sc: 80, second: 'VGK' },
+                { year: 2019, winner: 'MAC', team: 'STL', points: 160, tiebreak: 1, qf: 20, sf: 20, f: 40, sc: 80, second: 'TBL' },
+                { year: 2018, winner: 'TIMMY', team: 'VGK', points: 150, tiebreak: 1, qf: 50, sf: 60, f: 40, sc: 0, second: 'TBL' },
+                { year: 2017, winner: 'PEEP', team: 'PIT', points: 210, tiebreak: 1, qf: 50, sf: 40, f: 40, sc: 80, second: 'CHI' },
+                { year: 2016, winner: 'MAC', team: 'STL', points: 130, tiebreak: 2, qf: 50, sf: 40, f: 40, sc: 0, second: 'PIT' },
+                { year: 2015, winner: 'TARYN', team: 'ANA', points: 170, tiebreak: 1, qf: 70, sf: 60, f: 40, sc: 0, second: 'TBL' },
+                { year: 2014, winner: 'GRANGRAN', team: 'CHI', points: 140, tiebreak: 1, qf: 60, sf: 40, f: 40, sc: 0, second: 'NYR' }
+            ];
+            
+            const historyHTML = sampleHistory.map(entry => `
+                <div class="history-entry" onclick="viewHistoricBracket('${entry.winner}', ${entry.year})">
+                    <div class="year-badge">${entry.year}</div>
+                    <div class="champion-info">
+                        <img src="${TEAMS[entry.team] ? TEAMS[entry.team].logo : 'https://example.com/nhl.png'}" alt="${entry.team}" class="team-logo">
+                        <a href="#" class="champion-name">${entry.winner} ${entry.winner === 'GRANGRAN' ? `(${entry.year === 2024 ? '3' : '2'})` : entry.winner === 'TIMMY' || entry.winner === 'GARRETT' || entry.winner === 'MAC' ? '(2)' : ''}</a>
+                    </div>
+                    <div class="champion-stats">
+                        <div class="champion-stat">
+                            <span class="stat-label">PTS</span>
+                            <span class="stat-value">${entry.points}</span>
+                        </div>
+                        <div class="champion-stat">
+                            <span class="stat-label">TB</span>
+                            <span class="stat-value">+${entry.tiebreak}</span>
+                        </div>
+                        <div class="champion-stat">
+                            <span class="stat-label">QF</span>
+                            <span class="stat-value">${entry.qf}</span>
+                        </div>
+                        <div class="champion-stat">
+                            <span class="stat-label">SF</span>
+                            <span class="stat-value">${entry.sf}</span>
+                        </div>
+                        <div class="champion-stat">
+                            <span class="stat-label">F</span>
+                            <span class="stat-value">${entry.f}</span>
+                        </div>
+                        <div class="champion-stat">
+                            <span class="stat-label">SC</span>
+                            <span class="stat-value">${entry.sc}</span>
+                        </div>
+                        <div class="champion-stat">
+                            <span class="stat-label">2ND</span>
+                            <img src="${TEAMS[entry.second] ? TEAMS[entry.second].logo : 'https://example.com/nhl.png'}" alt="${entry.second}" class="second-place-logo">
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('historyContainer').innerHTML = historyHTML;
+        }
+
+        // Load Create Bracket
+        function loadCreateBracket() {
+            if (new Date() > CONFIG.DEADLINE) {
+                document.getElementById('bracketBuilder').innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h3>Bracket submission is closed!</h3>
+                        <p>The deadline has passed. You can view existing brackets in the Brackets section.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Generate bracket builder
+            const matchups = [
+                // West
+                { team1: 'WPG', team2: 'STL', conf: 'west' },
+                { team1: 'DAL', team2: 'COL', conf: 'west' },
+                { team1: 'VGK', team2: 'MIN', conf: 'west' },
+                { team1: 'LAK', team2: 'EDM', conf: 'west' },
+                // East
+                { team1: 'WSH', team2: 'MTL', conf: 'east' },
+                { team1: 'CAR', team2: 'NJD', conf: 'east' },
+                { team1: 'TOR', team2: 'OTT', conf: 'east' },
+                { team1: 'TBL', team2: 'FLA', conf: 'east' }
+            ];
+            
+            const westMatchups = matchups.filter(m => m.conf === 'west');
+            const eastMatchups = matchups.filter(m => m.conf === 'east');
+            
+            const builderHTML = `
+                <div class="conference">
+                    <h3 style="text-align: center; margin-bottom: 20px;">WESTERN CONFERENCE</h3>
+                    ${westMatchups.map((match, i) => `
+                        <div class="create-matchup">
+                            <label class="team-option">
+                                <input type="radio" name="west_qf_${i}" value="${match.team1}">
+                                <span class="seed">${TEAMS[match.team1].seed}</span>
+                                <img src="${TEAMS[match.team1].logo}" alt="" style="width: 24px; height: 24px;">
+                                <span>${match.team1}</span>
+                            </label>
+                            <label class="team-option">
+                                <input type="radio" name="west_qf_${i}" value="${match.team2}">
+                                <span class="seed">${TEAMS[match.team2].seed}</span>
+                                <img src="${TEAMS[match.team2].logo}" alt="" style="width: 24px; height: 24px;">
+                                <span>${match.team2}</span>
+                            </label>
+                            <div class="games-selector">
+                                ${[4,5,6,7].map(g => `
+                                    <button type="button" class="games-btn" data-matchup="west_qf_${i}" data-games="${g}">${g}</button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="trophy-container">
+                    <div class="stanley-cup"></div>
+                    <div style="margin-top: 20px;">
+                        <select id="stanleyCupWinner" style="padding: 10px; background: #333; color: white; border: 1px solid #666; border-radius: 5px;">
+                            <option value="">Select Champion</option>
+                            ${Object.keys(TEAMS).map(team => `
+                                <option value="${team}">${team} - ${TEAMS[team].name}</option>
+                            `).join('')}
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="conference">
+                    <h3 style="text-align: center; margin-bottom: 20px;">EASTERN CONFERENCE</h3>
+                    ${eastMatchups.map((match, i) => `
+                        <div class="create-matchup">
+                            <label class="team-option">
+                                <input type="radio" name="east_qf_${i}" value="${match.team1}">
+                                <span class="seed">${TEAMS[match.team1].seed}</span>
+                                <img src="${TEAMS[match.team1].logo}" alt="" style="width: 24px; height: 24px;">
+                                <span>${match.team1}</span>
+                            </label>
+                            <label class="team-option">
+                                <input type="radio" name="east_qf_${i}" value="${match.team2}">
+                                <span class="seed">${TEAMS[match.team2].seed}</span>
+                                <img src="${TEAMS[match.team2].logo}" alt="" style="width: 24px; height: 24px;">
+                                <span>${match.team2}</span>
+                            </label>
+                            <div class="games-selector">
+                                ${[4,5,6,7].map(g => `
+                                    <button type="button" class="games-btn
